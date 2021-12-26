@@ -19,8 +19,13 @@ class View:
             s.bind((host, port))
             print(f"Running on http://{host}:{port}/")
             while 1:
-                s.listen()
-                conn, addr = s.accept()
-                with conn:
-                    print("Connection to", addr)
-                    conn.sendall(self.html.encode("utf-8"))
+                try:
+                    s.listen()
+                    conn, addr = s.accept()
+                    with conn:
+                        print("Connection to", addr)
+                        conn.sendall(self.html.encode("utf-8"))
+                except KeyboardInterrupt:
+                    if input("Are you sure you want to exit(y/N)? ").lower() in ("y", "yes", "yup", "correcto", "y!", "yes!", "correcto!"):
+                        break
+        print("Server closed")
