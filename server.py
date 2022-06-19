@@ -12,7 +12,7 @@ class View:
         self.html = str(self.view())
 
     def view(self):
-        return "Hello! This is the default message, to modify it, overrun the 'view' function."
+        return "Hello! This is the default message, to modify it, overrun the 'view' method."
 
     def run(self, host="127.0.0.1", port=8000):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
